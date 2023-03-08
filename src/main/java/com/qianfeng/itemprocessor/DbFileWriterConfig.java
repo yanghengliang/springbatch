@@ -1,4 +1,4 @@
-package com.qianfeng.itemwriterfile;
+package com.qianfeng.itemprocessor;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,16 +12,17 @@ import org.springframework.core.io.FileSystemResource;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
 @Configuration
-public class FileItemWriterConfig {
+public class DbFileWriterConfig {
 	
-	@Bean(name = "fileItemWriter")
-	public FlatFileItemWriter<Customer> fileItemWriter() throws Exception {
+	@Bean
+	public FlatFileItemWriter<Customer> dbFileWriter() throws Exception {
 		// 把Customer对象转换成字符串输出到文件
 		FlatFileItemWriter<Customer> writer = new FlatFileItemWriter<Customer>();
 		
 //		String path = "‪D:\\2023\\springbatch\\customer.txt";
-		Path path = Paths.get("D:\\2023\\springbatch\\customer.txt");
+		Path path = Paths.get("D:\\2023\\springbatch\\customer3.txt");
 		
 		writer.setResource(new FileSystemResource(path));
 		
@@ -44,5 +45,6 @@ public class FileItemWriterConfig {
 		
 		return writer;
 	}
+	
 
 }
